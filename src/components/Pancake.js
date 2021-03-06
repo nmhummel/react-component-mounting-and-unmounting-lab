@@ -20,6 +20,10 @@ class Pancake extends React.Component {
     });
   };
 
+  componentDidMount(){
+    this.startInterval()
+  }
+
   startInterval = () => {
     this.interval = setInterval(this.updateCounter, 1000);
   };
@@ -28,6 +32,10 @@ class Pancake extends React.Component {
     clearInterval(this.interval);
   };
 
+  componentWillUnmount() {
+    this.cleanUpInterval()
+  }
+  
   flip = () => {
     this.setState({
       flippedAt: this.state.timeCooked
